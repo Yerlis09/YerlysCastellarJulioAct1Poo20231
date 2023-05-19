@@ -14,6 +14,7 @@ import java.util.List;
  * @author LENOVO
  */
 public class ProveedorCrud {
+
     private static ArrayList<Proveedor> collecProveedor = new ArrayList<>();
 
     public static Proveedor consultarProveedor(Proveedor proveedor) throws Exception {
@@ -25,12 +26,17 @@ public class ProveedorCrud {
         }
     }
 
-    public static int registrarProveedor(Proveedor proveedor) throws Exception {
+    public static void registrarProveedor(Proveedor proveedor) throws Exception {
         try {
-            collecProveedor.add(proveedor);
-            return 1;
+            int indice = buscarIndiceProveedor(proveedor);
+            if (indice == -1 || proveedor.getCodigoProveedor() != collecProveedor.get(indice).getCodigoProveedor()) {
+                collecProveedor.add(proveedor);
+                System.out.println("El Proveedor se registro correctamente");
+            } else {
+                System.out.println("El Proveedor ya existe");
+            }
         } catch (Exception e) {
-           throw new Exception(e.getMessage()); 
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -61,7 +67,7 @@ public class ProveedorCrud {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        
+
     }
 
     public static List<Proveedor> listarTodo() throws Exception {
@@ -72,7 +78,7 @@ public class ProveedorCrud {
         }
     }
 
-    public static int contarProveedor() throws Exception{
+    public static int contarProveedor() throws Exception {
         try {
             return collecProveedor.size();
         } catch (Exception e) {

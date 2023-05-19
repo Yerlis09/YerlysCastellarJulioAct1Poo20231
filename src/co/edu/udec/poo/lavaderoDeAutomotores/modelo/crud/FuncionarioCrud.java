@@ -14,6 +14,7 @@ import java.util.List;
  * @author LENOVO
  */
 public class FuncionarioCrud {
+
     private static ArrayList<Funcionario> collecFuncionario = new ArrayList<>();
 
     public static Funcionario consultarFuncionario(Funcionario funcionario) throws Exception {
@@ -25,12 +26,17 @@ public class FuncionarioCrud {
         }
     }
 
-    public static int registrarFuncionario(Funcionario funcionario) throws Exception {
+    public static void registrarFuncionario(Funcionario funcionario) throws Exception {
         try {
-            collecFuncionario.add(funcionario);
-            return 1;
+            int indice = buscarIndiceFuncionario(funcionario);
+            if (indice == -1 || funcionario.getCodigoFuncionario() != collecFuncionario.get(indice).getCodigoFuncionario()) {
+                collecFuncionario.add(funcionario);
+                System.out.println("El Funcionario se registro correctamente");
+            } else {
+                System.out.println("El Funcionario ya existe");
+            }
         } catch (Exception e) {
-           throw new Exception(e.getMessage()); 
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -61,7 +67,7 @@ public class FuncionarioCrud {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        
+
     }
 
     public static List<Funcionario> listarTodo() throws Exception {
@@ -72,7 +78,7 @@ public class FuncionarioCrud {
         }
     }
 
-    public static int contarFuncionario() throws Exception{
+    public static int contarFuncionario() throws Exception {
         try {
             return collecFuncionario.size();
         } catch (Exception e) {

@@ -14,6 +14,7 @@ import java.util.List;
  * @author LENOVO
  */
 public class CubiculoCrud {
+
     private static ArrayList<Cubiculo> collecCubiculo = new ArrayList<>();
 
     public static Cubiculo consultarCubiculo(Cubiculo cubiculo) throws Exception {
@@ -25,12 +26,17 @@ public class CubiculoCrud {
         }
     }
 
-    public static int registrarCubiculo(Cubiculo cubiculo) throws Exception {
+    public static void registrarCubiculo(Cubiculo cubiculo) throws Exception {
         try {
-            collecCubiculo.add(cubiculo);
-            return 1;
+            int indice = buscarIndiceCubiculo(cubiculo);
+            if (indice == -1 || cubiculo.getCodigoCubiculos() != collecCubiculo.get(indice).getCodigoCubiculos()) {
+                collecCubiculo.add(cubiculo);
+                System.out.println("El Cubiculo se registro correctamente");
+            } else {
+                System.out.println("El Cubiculo ya existe");
+            }
         } catch (Exception e) {
-           throw new Exception(e.getMessage()); 
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -61,7 +67,7 @@ public class CubiculoCrud {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        
+
     }
 
     public static List<Cubiculo> listarTodo() throws Exception {
@@ -72,7 +78,7 @@ public class CubiculoCrud {
         }
     }
 
-    public static int contarCubiculo() throws Exception{
+    public static int contarCubiculo() throws Exception {
         try {
             return collecCubiculo.size();
         } catch (Exception e) {

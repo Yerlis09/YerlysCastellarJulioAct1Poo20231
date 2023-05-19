@@ -14,6 +14,7 @@ import java.util.List;
  * @author LENOVO
  */
 public class NotaDeCorreccionCrud {
+
     private static ArrayList<NotaDeCorreccion> collecNotaDeCorreccion = new ArrayList<>();
 
     public static NotaDeCorreccion consultarNotaDeCorreccion(NotaDeCorreccion notaDeCorrecion) throws Exception {
@@ -25,12 +26,17 @@ public class NotaDeCorreccionCrud {
         }
     }
 
-    public static int registrarNotaDeCorreccion(NotaDeCorreccion notaDeCorrecion) throws Exception {
+    public static void registrarNotaDeCorreccion(NotaDeCorreccion notaDeCorreccion) throws Exception {
         try {
-            collecNotaDeCorreccion.add(notaDeCorrecion);
-            return 1;
+            int indice = buscarIndiceNotaDeCorreccion(notaDeCorreccion);
+            if (indice == -1 || notaDeCorreccion.getCodigoCorreccion() != collecNotaDeCorreccion.get(indice).getCodigoCorreccion()) {
+                collecNotaDeCorreccion.add(notaDeCorreccion);
+                System.out.println("El NotaDeCorreccion se registro correctamente");
+            } else {
+                System.out.println("El NotaDeCorreccion ya existe");
+            }
         } catch (Exception e) {
-           throw new Exception(e.getMessage()); 
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -61,7 +67,7 @@ public class NotaDeCorreccionCrud {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        
+
     }
 
     public static List<NotaDeCorreccion> listarTodo() throws Exception {
@@ -72,12 +78,12 @@ public class NotaDeCorreccionCrud {
         }
     }
 
-    public static int contarNotaDeCorreccion() throws Exception{
+    public static int contarNotaDeCorreccion() throws Exception {
         try {
             return collecNotaDeCorreccion.size();
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
     }
-    
+
 }

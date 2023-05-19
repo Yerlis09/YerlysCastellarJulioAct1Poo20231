@@ -14,6 +14,7 @@ import java.util.List;
  * @author LENOVO
  */
 public class ComprobanteDePagoCrud {
+
     private static ArrayList<ComprobanteDePago> collecComprobanteDePago = new ArrayList<>();
 
     public static ComprobanteDePago consultarComprobanteDePago(ComprobanteDePago comprobanteDePago) throws Exception {
@@ -25,12 +26,17 @@ public class ComprobanteDePagoCrud {
         }
     }
 
-    public static int registrarComprobanteDePago(ComprobanteDePago comprobanteDePago) throws Exception {
+    public static void registrarComprobanteDePago(ComprobanteDePago comprobanteDePago) throws Exception {
         try {
-            collecComprobanteDePago.add(comprobanteDePago);
-            return 1;
+            int indice = buscarIndiceComprobanteDePago(comprobanteDePago);
+            if (indice == -1 || comprobanteDePago.getCodigoComprobante() != collecComprobanteDePago.get(indice).getCodigoComprobante()) {
+                collecComprobanteDePago.add(comprobanteDePago);
+                System.out.println("El Comprobante De Pago se registro correctamente");
+            } else {
+                System.out.println("El Comprobante De Pago ya existe");
+            }
         } catch (Exception e) {
-           throw new Exception(e.getMessage()); 
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -61,7 +67,7 @@ public class ComprobanteDePagoCrud {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        
+
     }
 
     public static List<ComprobanteDePago> listarTodo() throws Exception {
@@ -72,7 +78,7 @@ public class ComprobanteDePagoCrud {
         }
     }
 
-    public static int contarComprobanteDePago() throws Exception{
+    public static int contarComprobanteDePago() throws Exception {
         try {
             return collecComprobanteDePago.size();
         } catch (Exception e) {

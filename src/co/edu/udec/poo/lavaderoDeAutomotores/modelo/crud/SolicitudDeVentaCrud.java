@@ -14,6 +14,7 @@ import java.util.List;
  * @author LENOVO
  */
 public class SolicitudDeVentaCrud {
+
     private static ArrayList<SolicitudDeVenta> collecSolicitudDeVenta = new ArrayList<>();
 
     public static SolicitudDeVenta consultarSolicitudDeVenta(SolicitudDeVenta solicitudDeVenta) throws Exception {
@@ -25,12 +26,17 @@ public class SolicitudDeVentaCrud {
         }
     }
 
-    public static int registrarSolicitudDeVenta(SolicitudDeVenta solicitudDeVenta) throws Exception {
+    public static void registrarSolicitudDeVenta(SolicitudDeVenta solicitudDeVenta) throws Exception {
         try {
-            collecSolicitudDeVenta.add(solicitudDeVenta);
-            return 1;
+            int indice = buscarIndiceSolicitudDeVenta(solicitudDeVenta);
+            if (indice == -1 || solicitudDeVenta.getCodigoSolicitudDeVenta() != collecSolicitudDeVenta.get(indice).getCodigoSolicitudDeVenta()) {
+                collecSolicitudDeVenta.add(solicitudDeVenta);
+                System.out.println("El SolicitudDeVenta se registro correctamente");
+            } else {
+                System.out.println("El SolicitudDeVenta ya existe");
+            }
         } catch (Exception e) {
-           throw new Exception(e.getMessage()); 
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -61,7 +67,7 @@ public class SolicitudDeVentaCrud {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        
+
     }
 
     public static List<SolicitudDeVenta> listarTodo() throws Exception {
@@ -72,7 +78,7 @@ public class SolicitudDeVentaCrud {
         }
     }
 
-    public static int contarSolicitudDeVenta() throws Exception{
+    public static int contarSolicitudDeVenta() throws Exception {
         try {
             return collecSolicitudDeVenta.size();
         } catch (Exception e) {

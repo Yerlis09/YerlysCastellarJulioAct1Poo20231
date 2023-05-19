@@ -21,10 +21,15 @@ public class BodegaCrud {
         }
     }
 
-    public static int registrarBodega(Bodega bodega) throws Exception {
+    public static void registrarBodega(Bodega bodega) throws Exception {
         try {
-            collecBodega.add(bodega);
-            return 1;
+            int indice = buscarIndiceBodega(bodega);
+            if (indice == -1 || bodega.getCodigoBodega() != collecBodega.get(indice).getCodigoBodega()) {
+                collecBodega.add(bodega);
+                System.out.println("El Bodega se registro correctamente");
+            } else {
+                System.out.println("El Bodega ya existe");
+            }
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }

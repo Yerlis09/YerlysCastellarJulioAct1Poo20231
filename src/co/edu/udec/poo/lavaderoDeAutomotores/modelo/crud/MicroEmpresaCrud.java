@@ -13,7 +13,8 @@ import java.util.List;
  *
  * @author LENOVO
  */
-public class MicroEmpresaCrud{
+public class MicroEmpresaCrud {
+
     private static ArrayList<MicroEmpresa> collecMicroEmpresa = new ArrayList<>();
 
     public static MicroEmpresa consultarMicroEmpresa(MicroEmpresa microEmpresa) throws Exception {
@@ -25,12 +26,17 @@ public class MicroEmpresaCrud{
         }
     }
 
-    public static int registrarMicroEmpresa(MicroEmpresa microEmpresa) throws Exception {
+    public static void registrarMicroEmpresa(MicroEmpresa microEmpresa) throws Exception {
         try {
-            collecMicroEmpresa.add(microEmpresa);
-            return 1;
+            int indice = buscarIndiceMicroEmpresa(microEmpresa);
+            if (indice == -1 || microEmpresa.getCodigoMicroEmpresa() != collecMicroEmpresa.get(indice).getCodigoMicroEmpresa()) {
+                collecMicroEmpresa.add(microEmpresa);
+                System.out.println("El MicroEmpresa se registro correctamente");
+            } else {
+                System.out.println("El MicroEmpresa ya existe");
+            }
         } catch (Exception e) {
-           throw new Exception(e.getMessage()); 
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -61,7 +67,7 @@ public class MicroEmpresaCrud{
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        
+
     }
 
     public static List<MicroEmpresa> listarTodo() throws Exception {
@@ -72,12 +78,12 @@ public class MicroEmpresaCrud{
         }
     }
 
-    public static int contarMicroEmpresa() throws Exception{
+    public static int contarMicroEmpresa() throws Exception {
         try {
             return collecMicroEmpresa.size();
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
     }
-    
+
 }

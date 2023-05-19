@@ -14,6 +14,7 @@ import java.util.List;
  * @author LENOVO
  */
 public class OrdenDePedidoCrud {
+
     private static ArrayList<OrdenDePedido> collecOrdenDePedido = new ArrayList<>();
 
     public static OrdenDePedido consultarOrdenDePedido(OrdenDePedido ordenDePedido) throws Exception {
@@ -25,12 +26,17 @@ public class OrdenDePedidoCrud {
         }
     }
 
-    public static int registrarOrdenDePedido(OrdenDePedido ordenDePedido) throws Exception {
+    public static void registrarOrdenDePedido(OrdenDePedido ordenDePedido) throws Exception {
         try {
-            collecOrdenDePedido.add(ordenDePedido);
-            return 1;
+            int indice = buscarIndiceOrdenDePedido(ordenDePedido);
+            if (indice == -1 || ordenDePedido.getCodigoOrden() != collecOrdenDePedido.get(indice).getCodigoOrden()) {
+                collecOrdenDePedido.add(ordenDePedido);
+                System.out.println("El OrdenDePedido se registro correctamente");
+            } else {
+                System.out.println("El OrdenDePedido ya existe");
+            }
         } catch (Exception e) {
-           throw new Exception(e.getMessage()); 
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -61,7 +67,7 @@ public class OrdenDePedidoCrud {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        
+
     }
 
     public static List<OrdenDePedido> listarTodo() throws Exception {
@@ -72,7 +78,7 @@ public class OrdenDePedidoCrud {
         }
     }
 
-    public static int contarOrdenDePedido() throws Exception{
+    public static int contarOrdenDePedido() throws Exception {
         try {
             return collecOrdenDePedido.size();
         } catch (Exception e) {

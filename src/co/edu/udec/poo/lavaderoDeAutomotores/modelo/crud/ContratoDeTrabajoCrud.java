@@ -14,6 +14,7 @@ import java.util.List;
  * @author LENOVO
  */
 public class ContratoDeTrabajoCrud {
+
     private static ArrayList<ContratoDeTrabajo> collecContratoDeTrabajo = new ArrayList<>();
 
     public static ContratoDeTrabajo consultarContratoDeTrabajo(ContratoDeTrabajo contratoDeTrabajo) throws Exception {
@@ -25,12 +26,17 @@ public class ContratoDeTrabajoCrud {
         }
     }
 
-    public static int registrarContratoDeTrabajo(ContratoDeTrabajo contratoDeTrabajo) throws Exception {
+    public static void registrarContratoDeTrabajo(ContratoDeTrabajo contratoDeTrabajo) throws Exception {
         try {
-            collecContratoDeTrabajo.add(contratoDeTrabajo);
-            return 1;
+            int indice = buscarIndiceContratoDeTrabajo(contratoDeTrabajo);
+            if (indice == -1 || contratoDeTrabajo.getCodigoContrato() != collecContratoDeTrabajo.get(indice).getCodigoContrato()) {
+                collecContratoDeTrabajo.add(contratoDeTrabajo);
+                System.out.println("El ContratoDeTrabajo se registro correctamente");
+            } else {
+                System.out.println("El ContratoDeTrabajo ya existe");
+            }
         } catch (Exception e) {
-           throw new Exception(e.getMessage()); 
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -61,7 +67,7 @@ public class ContratoDeTrabajoCrud {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        
+
     }
 
     public static List<ContratoDeTrabajo> listarTodo() throws Exception {
@@ -72,7 +78,7 @@ public class ContratoDeTrabajoCrud {
         }
     }
 
-    public static int contarContratoDeTrabajo() throws Exception{
+    public static int contarContratoDeTrabajo() throws Exception {
         try {
             return collecContratoDeTrabajo.size();
         } catch (Exception e) {

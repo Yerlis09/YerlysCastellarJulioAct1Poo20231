@@ -14,6 +14,7 @@ import java.util.List;
  * @author LENOVO
  */
 public class GrupoEmpresarialCrud {
+
     private static ArrayList<GrupoEmpresarial> collecGrupoEmpresarial = new ArrayList<>();
 
     public static GrupoEmpresarial consultarGrupoEmpresarial(GrupoEmpresarial grupoEmpresarial) throws Exception {
@@ -25,12 +26,17 @@ public class GrupoEmpresarialCrud {
         }
     }
 
-    public static int registrarGrupoEmpresarial(GrupoEmpresarial grupoEmpresarial) throws Exception {
+    public static void registrarGrupoEmpresarial(GrupoEmpresarial grupoEmpresarial) throws Exception {
         try {
-            collecGrupoEmpresarial.add(grupoEmpresarial);
-            return 1;
+            int indice = buscarIndiceGrupoEmpresarial(grupoEmpresarial);
+            if (indice == -1 || grupoEmpresarial.getCodigoEmpresa() != collecGrupoEmpresarial.get(indice).getCodigoEmpresa()) {
+                collecGrupoEmpresarial.add(grupoEmpresarial);
+                System.out.println("El GrupoEmpresarial se registro correctamente");
+            } else {
+                System.out.println("El GrupoEmpresarial ya existe");
+            }
         } catch (Exception e) {
-           throw new Exception(e.getMessage()); 
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -61,7 +67,7 @@ public class GrupoEmpresarialCrud {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        
+
     }
 
     public static List<GrupoEmpresarial> listarTodo() throws Exception {
@@ -72,7 +78,7 @@ public class GrupoEmpresarialCrud {
         }
     }
 
-    public static int contarGrupoEmpresarial() throws Exception{
+    public static int contarGrupoEmpresarial() throws Exception {
         try {
             return collecGrupoEmpresarial.size();
         } catch (Exception e) {

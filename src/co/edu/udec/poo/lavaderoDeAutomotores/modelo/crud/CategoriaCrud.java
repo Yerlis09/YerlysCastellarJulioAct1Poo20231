@@ -14,6 +14,7 @@ import java.util.List;
  * @author LENOVO
  */
 public class CategoriaCrud {
+
     private static ArrayList<Categoria> collecCategoria = new ArrayList<>();
 
     public static Categoria consultarCategoria(Categoria categoria) throws Exception {
@@ -25,12 +26,17 @@ public class CategoriaCrud {
         }
     }
 
-    public static int registrarCategoria(Categoria categoria) throws Exception {
+    public static void registrarCategoria(Categoria categoria) throws Exception {
         try {
-            collecCategoria.add(categoria);
-            return 1;
+            int indice = buscarIndiceCategoria(categoria);
+            if (indice == -1 || categoria.getCodigoCategoria() != collecCategoria.get(indice).getCodigoCategoria()) {
+                collecCategoria.add(categoria);
+                System.out.println("El Categoria se registro correctamente");
+            } else {
+                System.out.println("El Categoria ya existe");
+            }
         } catch (Exception e) {
-           throw new Exception(e.getMessage()); 
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -61,7 +67,7 @@ public class CategoriaCrud {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        
+
     }
 
     public static List<Categoria> listarTodo() throws Exception {
@@ -72,7 +78,7 @@ public class CategoriaCrud {
         }
     }
 
-    public static int contarCategoria() throws Exception{
+    public static int contarCategoria() throws Exception {
         try {
             return collecCategoria.size();
         } catch (Exception e) {

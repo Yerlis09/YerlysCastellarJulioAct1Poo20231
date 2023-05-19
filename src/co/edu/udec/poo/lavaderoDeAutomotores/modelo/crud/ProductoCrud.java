@@ -13,7 +13,7 @@ public class ProductoCrud {
     private static ArrayList<Producto> collecProducto = new ArrayList<>();
 
     public static Producto consultarProducto(Producto producto) throws Exception {
-        try { 
+        try {
             int indice = buscarIndiceProducto(producto);
             return collecProducto.get(indice);
         } catch (Exception e) {
@@ -21,10 +21,15 @@ public class ProductoCrud {
         }
     }
 
-    public static int registrarProducto(Producto producto) throws Exception {
+    public static void registrarProducto(Producto producto) throws Exception {
         try {
-            collecProducto.add(producto);
-            return 1;
+            int indice = buscarIndiceProducto(producto);
+            if (indice == -1 || producto.getCodigoProducto() != collecProducto.get(indice).getCodigoProducto()) {
+                collecProducto.add(producto);
+                System.out.println("El Producto se registro correctamente");
+            } else {
+                System.out.println("El Producto ya existe");
+            }
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }

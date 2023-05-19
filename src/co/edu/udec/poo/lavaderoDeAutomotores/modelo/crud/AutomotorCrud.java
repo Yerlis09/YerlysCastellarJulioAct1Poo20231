@@ -18,10 +18,15 @@ public class AutomotorCrud {
         }
     }
 
-    public static int registrarAutomotor(Automotor automotor) throws Exception {
+    public static void registrarAutomotor(Automotor automotor) throws Exception {
         try {
-            collecAutomotor.add(automotor);
-            return 1;
+            int indice = buscarIndiceAutomotor(automotor);
+            if (indice == -1 || automotor.getCodigoAutomotor() != collecAutomotor.get(indice).getCodigoAutomotor()) {
+                collecAutomotor.add(automotor);
+                System.out.println("El automotor se registro correctamente");
+            } else {
+                System.out.println("El automotor ya existe");
+            }
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }

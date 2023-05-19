@@ -14,6 +14,7 @@ import java.util.List;
  * @author LENOVO
  */
 public class NotaDeCorrecionPedidoCrud {
+
     private static ArrayList<NotaDeCorrecionPedido> collecNotaDeCorrecionPedido = new ArrayList<>();
 
     public static NotaDeCorrecionPedido consultarNotaDeCorrecionPedido(NotaDeCorrecionPedido notaDeCorrecionPedido) throws Exception {
@@ -25,12 +26,17 @@ public class NotaDeCorrecionPedidoCrud {
         }
     }
 
-    public static int registrarNotaDeCorrecionPedido(NotaDeCorrecionPedido notaDeCorrecionPedido) throws Exception {
+    public static void registrarNotaDeCorrecionPedido(NotaDeCorrecionPedido notaCorrecionDePedido) throws Exception {
         try {
-            collecNotaDeCorrecionPedido.add(notaDeCorrecionPedido);
-            return 1;
+            int indice = buscarIndiceNotaDeCorrecionPedido(notaCorrecionDePedido);
+            if (indice == -1 || notaCorrecionDePedido.getCodigoNotaCPedido() != collecNotaDeCorrecionPedido.get(indice).getCodigoNotaCPedido()) {
+                collecNotaDeCorrecionPedido.add(notaCorrecionDePedido);
+                System.out.println("El NotaDeCorrecionPedido se registro correctamente");
+            } else {
+                System.out.println("El NotaDeCorrecionPedido ya existe");
+            }
         } catch (Exception e) {
-           throw new Exception(e.getMessage()); 
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -61,7 +67,7 @@ public class NotaDeCorrecionPedidoCrud {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        
+
     }
 
     public static List<NotaDeCorrecionPedido> listarTodo() throws Exception {
@@ -72,7 +78,7 @@ public class NotaDeCorrecionPedidoCrud {
         }
     }
 
-    public static int contarNotaDeCorrecionPedido() throws Exception{
+    public static int contarNotaDeCorrecionPedido() throws Exception {
         try {
             return collecNotaDeCorrecionPedido.size();
         } catch (Exception e) {

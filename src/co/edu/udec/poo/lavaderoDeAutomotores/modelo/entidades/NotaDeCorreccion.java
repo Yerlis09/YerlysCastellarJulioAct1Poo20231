@@ -7,23 +7,23 @@ package co.edu.udec.poo.lavaderoDeAutomotores.modelo.entidades;
 public class NotaDeCorreccion {
 
     private static int contadorNotaDeCorreccion;
-    private int codigoCorreccionPedido;
+    private int codigoCorreccion;
     private NotaDeCorrecionPedido notaDeCorrecionPedido;
 
     public NotaDeCorreccion() {
-        this.codigoCorreccionPedido = ++NotaDeCorreccion.contadorNotaDeCorreccion;
+        this.codigoCorreccion = ++NotaDeCorreccion.contadorNotaDeCorreccion;
     }
 
     public NotaDeCorreccion(String codigoCorreccionPedido) {
         this();
     }
 
-    public int getCodigoCorreccionPedido() {
-        return codigoCorreccionPedido;
+    public int getCodigoCorreccion() {
+        return codigoCorreccion;
     }
 
     public void setCodigoCorreccionPedido(int codigoCorreccionPedido) {
-        this.codigoCorreccionPedido = codigoCorreccionPedido;
+        this.codigoCorreccion = codigoCorreccionPedido;
     }
 
     public NotaDeCorrecionPedido getNotaDeCorrecionPedido() {
@@ -36,6 +36,6 @@ public class NotaDeCorreccion {
 
     @Override
     public String toString() {
-        return "NotaDeCorreccion{" + "codigoCorreccionPedido=" + codigoCorreccionPedido + ", notaDeCorrecionPedido=" + notaDeCorrecionPedido + '}';
+        return "NotaDeCorreccion{" + "codigoCorreccionPedido=" + codigoCorreccion + ", notaDeCorrecionPedido=" + notaDeCorrecionPedido + '}';
     }
 }

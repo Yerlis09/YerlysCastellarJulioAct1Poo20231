@@ -14,6 +14,7 @@ import java.util.List;
  * @author LENOVO
  */
 public class DetalleProductNoCorresCrud {
+
     private static ArrayList<DetalleProductNoCorres> collecDetalleProductNoCorres = new ArrayList<>();
 
     public static DetalleProductNoCorres consultarDetalleProductNoCorres(DetalleProductNoCorres detalleProductNoCorres) throws Exception {
@@ -25,12 +26,17 @@ public class DetalleProductNoCorresCrud {
         }
     }
 
-    public static int registrarDetalleProductNoCorres(DetalleProductNoCorres detalleProductNoCorres) throws Exception {
+    public static void registrarDetalleProductNoCorres(DetalleProductNoCorres bodega) throws Exception {
         try {
-            collecDetalleProductNoCorres.add(detalleProductNoCorres);
-            return 1;
+            int indice = buscarIndiceDetalleProductNoCorres(bodega);
+            if (indice == -1 || bodega.getCodigoDetalleProductNoCorres() != collecDetalleProductNoCorres.get(indice).getCodigoDetalleProductNoCorres()) {
+                collecDetalleProductNoCorres.add(bodega);
+                System.out.println("El DetalleProductNoCorres se registro correctamente");
+            } else {
+                System.out.println("El DetalleProductNoCorres ya existe");
+            }
         } catch (Exception e) {
-           throw new Exception(e.getMessage()); 
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -61,7 +67,7 @@ public class DetalleProductNoCorresCrud {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        
+
     }
 
     public static List<DetalleProductNoCorres> listarTodo() throws Exception {
@@ -72,7 +78,7 @@ public class DetalleProductNoCorresCrud {
         }
     }
 
-    public static int contarDetalleProductNoCorres() throws Exception{
+    public static int contarDetalleProductNoCorres() throws Exception {
         try {
             return collecDetalleProductNoCorres.size();
         } catch (Exception e) {

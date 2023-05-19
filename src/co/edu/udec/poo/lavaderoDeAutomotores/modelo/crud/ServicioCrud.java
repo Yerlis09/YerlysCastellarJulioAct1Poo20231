@@ -14,6 +14,7 @@ import java.util.List;
  * @author LENOVO
  */
 public class ServicioCrud {
+
     private static ArrayList<Servicio> collecServicio = new ArrayList<>();
 
     public static Servicio consultarServicio(Servicio servicio) throws Exception {
@@ -25,12 +26,17 @@ public class ServicioCrud {
         }
     }
 
-    public static int registrarServicio(Servicio servicio) throws Exception {
+    public static void registrarServicio(Servicio servicio) throws Exception {
         try {
-            collecServicio.add(servicio);
-            return 1;
+            int indice = buscarIndiceServicio(servicio);
+            if (indice == -1 || servicio.getCodigoServicio() != collecServicio.get(indice).getCodigoServicio()) {
+                collecServicio.add(servicio);
+                System.out.println("El Servicio se registro correctamente");
+            } else {
+                System.out.println("El Servicio ya existe");
+            }
         } catch (Exception e) {
-           throw new Exception(e.getMessage()); 
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -61,7 +67,7 @@ public class ServicioCrud {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        
+
     }
 
     public static List<Servicio> listarTodo() throws Exception {
@@ -72,7 +78,7 @@ public class ServicioCrud {
         }
     }
 
-    public static int contarServicio() throws Exception{
+    public static int contarServicio() throws Exception {
         try {
             return collecServicio.size();
         } catch (Exception e) {

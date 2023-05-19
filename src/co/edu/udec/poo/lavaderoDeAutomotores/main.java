@@ -21,16 +21,10 @@ public class main {
             automotor2.setTipo("Veloz");
 
             System.out.println("---Metodo de registrar---");
-            if (AutomotorCrud.registrarAutomotor(automotor1) == 1) {
-                System.out.println("El automotor fue registrado correctamente");
-            } else {
-                System.out.println("El automotor no se pudo registrar");
-            }
-            if (AutomotorCrud.registrarAutomotor(automotor2) == 1) {
-                System.out.println("El automotor fue registrado correctamente");
-            } else {
-                System.out.println("El automotor no se pudo registrar");
-            }
+            AutomotorCrud.registrarAutomotor(automotor1);
+            AutomotorCrud.registrarAutomotor(automotor1);
+            AutomotorCrud.registrarAutomotor(automotor2);
+
             System.out.println("--Metodo Consultar---");
             System.out.println(AutomotorCrud.consultarAutomotor(automotor1));
             System.out.println(AutomotorCrud.consultarAutomotor(automotor2));
@@ -61,17 +55,10 @@ public class main {
             bodega2.setNuevoPrecioVentaProducto(500);
             bodega2.setStock(5);
 
-            System.out.println("---Metodo de registrar---");
-            if (BodegaCrud.registrarBodega(bodega1) == 1) {
-                System.out.println("La bodega1 fue registrado correctamente");
-            } else {
-                System.out.println("La bodega1 no se pudo registrar");
-            }
-            if (BodegaCrud.registrarBodega(bodega2) == 1) {
-                System.out.println("El bodega 2 fue registrado correctamente");
-            } else {
-                System.out.println("El bodega 2 no se pudo registrar");
-            }
+            System.out.println("--Metodo Guardar---");
+            BodegaCrud.registrarBodega(bodega1);
+            BodegaCrud.registrarBodega(bodega2);
+
             System.out.println("--Metodo Consultar---");
             System.out.println(BodegaCrud.consultarBodega(bodega1));
             System.out.println(BodegaCrud.consultarBodega(bodega2));

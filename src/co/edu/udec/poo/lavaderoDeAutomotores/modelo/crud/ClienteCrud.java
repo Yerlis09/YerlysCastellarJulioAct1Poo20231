@@ -14,6 +14,7 @@ import java.util.List;
  * @author LENOVO
  */
 public class ClienteCrud {
+
     private static ArrayList<Cliente> collecCliente = new ArrayList<>();
 
     public static Cliente consultarCliente(Cliente cliente) throws Exception {
@@ -25,12 +26,17 @@ public class ClienteCrud {
         }
     }
 
-    public static int registrarCliente(Cliente cliente) throws Exception {
+    public static void registrarCliente(Cliente cliente) throws Exception {
         try {
-            collecCliente.add(cliente);
-            return 1;
+            int indice = buscarIndiceCliente(cliente);
+            if (indice == -1 || cliente.getCodigoCliente() != collecCliente.get(indice).getCodigoCliente()) {
+                collecCliente.add(cliente);
+                System.out.println("El Cliente se registro correctamente");
+            } else {
+                System.out.println("El Cliente ya existe");
+            }
         } catch (Exception e) {
-           throw new Exception(e.getMessage()); 
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -61,7 +67,7 @@ public class ClienteCrud {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        
+
     }
 
     public static List<Cliente> listarTodo() throws Exception {
@@ -72,7 +78,7 @@ public class ClienteCrud {
         }
     }
 
-    public static int contarCliente() throws Exception{
+    public static int contarCliente() throws Exception {
         try {
             return collecCliente.size();
         } catch (Exception e) {

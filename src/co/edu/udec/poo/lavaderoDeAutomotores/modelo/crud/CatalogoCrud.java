@@ -14,6 +14,7 @@ import java.util.List;
  * @author LENOVO
  */
 public class CatalogoCrud {
+
     private static ArrayList<Catalogo> collecCatalogo = new ArrayList<>();
 
     public static Catalogo consultarCatalogo(Catalogo catalogo) throws Exception {
@@ -25,12 +26,17 @@ public class CatalogoCrud {
         }
     }
 
-    public static int registrarCatalogo(Catalogo catalogo) throws Exception {
+    public static void registrarCatalogo(Catalogo catalogo) throws Exception {
         try {
-            collecCatalogo.add(catalogo);
-            return 1;
+            int indice = buscarIndiceCatalogo(catalogo);
+            if (indice == -1 || catalogo.getCodigoCatalogo() != collecCatalogo.get(indice).getCodigoCatalogo()) {
+                collecCatalogo.add(catalogo);
+                System.out.println("El Catalogo se registro correctamente");
+            } else {
+                System.out.println("El Catalogo ya existe");
+            }
         } catch (Exception e) {
-           throw new Exception(e.getMessage()); 
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -61,7 +67,7 @@ public class CatalogoCrud {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        
+
     }
 
     public static List<Catalogo> listarTodo() throws Exception {
@@ -72,7 +78,7 @@ public class CatalogoCrud {
         }
     }
 
-    public static int contarCatalogo() throws Exception{
+    public static int contarCatalogo() throws Exception {
         try {
             return collecCatalogo.size();
         } catch (Exception e) {

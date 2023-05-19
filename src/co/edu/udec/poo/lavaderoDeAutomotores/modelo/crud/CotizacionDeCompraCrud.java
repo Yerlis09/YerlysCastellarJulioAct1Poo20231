@@ -14,6 +14,7 @@ import java.util.List;
  * @author LENOVO
  */
 public class CotizacionDeCompraCrud {
+
     private static ArrayList<CotizacionDeCompra> collecCotizacionDeCompra = new ArrayList<>();
 
     public static CotizacionDeCompra consultarCotizacionDeCompra(CotizacionDeCompra cotizacionDeCompra) throws Exception {
@@ -25,12 +26,17 @@ public class CotizacionDeCompraCrud {
         }
     }
 
-    public static int registrarCotizacionDeCompra(CotizacionDeCompra cotizacionDeCompra) throws Exception {
+    public static void registrarCotizacionDeCompra(CotizacionDeCompra cotizacionDeCompra) throws Exception {
         try {
-            collecCotizacionDeCompra.add(cotizacionDeCompra);
-            return 1;
+            int indice = buscarIndiceCotizacionDeCompra(cotizacionDeCompra);
+            if (indice == -1 || cotizacionDeCompra.getCodigoCotizacion() != collecCotizacionDeCompra.get(indice).getCodigoCotizacion()) {
+                collecCotizacionDeCompra.add(cotizacionDeCompra);
+                System.out.println("El CotizacionDeCompra se registro correctamente");
+            } else {
+                System.out.println("El CotizacionDeCompra ya existe");
+            }
         } catch (Exception e) {
-           throw new Exception(e.getMessage()); 
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -61,7 +67,7 @@ public class CotizacionDeCompraCrud {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        
+
     }
 
     public static List<CotizacionDeCompra> listarTodo() throws Exception {
@@ -72,7 +78,7 @@ public class CotizacionDeCompraCrud {
         }
     }
 
-    public static int contarCotizacionDeCompra() throws Exception{
+    public static int contarCotizacionDeCompra() throws Exception {
         try {
             return collecCotizacionDeCompra.size();
         } catch (Exception e) {
