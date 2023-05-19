@@ -6,30 +6,32 @@ package co.edu.udec.poo.lavaderoDeAutomotores.modelo.entidades;
  */
 public class Automotor {
 
-    private String codigoAutomotor;
+    public static int contadorAutomotor;
+    private int codigoAutomotor;
     private String planta;
     private String marca;
     private String tipo;
     private String color;
 
     public Automotor() {
+        this.codigoAutomotor = ++Automotor.contadorAutomotor;
     }
 
-    public Automotor(String codigoAutomotor, String planta, String marca, String tipo, String color) {
-        this.codigoAutomotor = codigoAutomotor;
+    public Automotor(String planta, String marca, String tipo, String color) {
+        this();
         this.planta = planta;
         this.marca = marca;
         this.tipo = tipo;
         this.color = color;
     }
 
-    public String getCodigoAutomotor() {
+    public int getCodigoAutomotor() {
         return codigoAutomotor;
     }
 
-    public void setCodigoAutomotor(String codigoAutomotor) {
-        this.codigoAutomotor = codigoAutomotor;
-    }
+//    public void setCodigoAutomotor(int codigoAutomotor) { Importante: en esta segunda actividad de POO estare trabajando con el este set comentado, ya que no ocupo utilizarlo por el momento
+//        this.codigoAutomotor = codigoAutomotor;
+//    }
 
     public String getPlanta() {
         return planta;
