@@ -6,7 +6,8 @@ package co.edu.udec.poo.lavaderoDeAutomotores.modelo.entidades;
  */
 public class Cliente {
 
-    private String codigoCliente;
+    private static int contadorCliente;
+    private int codigoCliente;
     private String numeroId;
     private String tipoId;
     private String nombre;
@@ -15,10 +16,11 @@ public class Cliente {
     private String telefono;
 
     public Cliente() {
+        this.codigoCliente = ++Cliente.contadorCliente;
     }
 
-    public Cliente(String codigoCliente, String numeroId, String tipoId, String nombre, String apellido, String email, String telefono) {
-        this.codigoCliente = codigoCliente;
+    public Cliente(String numeroId, String tipoId, String nombre, String apellido, String email, String telefono) {
+        this();
         this.numeroId = numeroId;
         this.tipoId = tipoId;
         this.nombre = nombre;
@@ -27,12 +29,8 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public String getCodigoCliente() {
+    public int getCodigoCliente() {
         return codigoCliente;
-    }
-
-    public void setCodigoCliente(String codigoCliente) {
-        this.codigoCliente = codigoCliente;
     }
 
     public String getNumeroId() {

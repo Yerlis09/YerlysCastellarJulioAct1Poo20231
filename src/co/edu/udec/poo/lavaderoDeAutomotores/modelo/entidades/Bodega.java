@@ -6,27 +6,25 @@ package co.edu.udec.poo.lavaderoDeAutomotores.modelo.entidades;
  */
 public class Bodega {
 
-    private String codigoBodega;
+    private static int contadorBodega;
+    private int codigoBodega;
     private double PrecioUnitActualMenosPrecioUnitarioAnt;
     private double nuevoPrecioVentaProducto;
     private int stock;
 
     public Bodega() {
+        this.codigoBodega = ++Bodega.contadorBodega;
     }
 
-    public Bodega(String codigoBodega, double PrecioUnitActualMenosPrecioUnitarioAnt, double nuevoPrecioVentaProducto, int stock) {
-        this.codigoBodega = codigoBodega;
+    public Bodega(double PrecioUnitActualMenosPrecioUnitarioAnt, double nuevoPrecioVentaProducto, int stock) {
+        this();
         this.PrecioUnitActualMenosPrecioUnitarioAnt = PrecioUnitActualMenosPrecioUnitarioAnt;
         this.nuevoPrecioVentaProducto = nuevoPrecioVentaProducto;
         this.stock = stock;
     }
-    
-    public String getCodigoBodega() {
-        return codigoBodega;
-    }
 
-    public void setCodigoBodega(String codigoBodega) {
-        this.codigoBodega = codigoBodega;
+    public int getCodigoBodega() {
+        return codigoBodega;
     }
 
     public double getPrecioUnitActualMenosPrecioUnitarioAnt() {

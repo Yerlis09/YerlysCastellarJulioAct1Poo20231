@@ -6,7 +6,8 @@ package co.edu.udec.poo.lavaderoDeAutomotores.modelo.entidades;
  */
 public class Producto {
 
-    private String codigoProducto;
+    private static int contadorProducto;
+    private int codigoProducto;
     private String nombre;
     private boolean tieneMarca;
     private String nombreMarca;
@@ -21,10 +22,11 @@ public class Producto {
     private double precioIvaConDescuento;
 
     public Producto() {
+        this.codigoProducto = ++Producto.contadorProducto;
     }
 
-    public Producto(String codigoProducto, String nombre, boolean tieneMarca, String nombreMarca, boolean tienePrecioCompra, double precioCompra, boolean tieneStock, int stock, String tiempoGarantia, double precioUnitario, double descuentoIva, double precioIvaSinDescuento, double precioIvaConDescuento) {
-        this.codigoProducto = codigoProducto;
+    public Producto(String nombre, boolean tieneMarca, String nombreMarca, boolean tienePrecioCompra, double precioCompra, boolean tieneStock, int stock, String tiempoGarantia, double precioUnitario, double descuentoIva, double precioIvaSinDescuento, double precioIvaConDescuento) {
+        this();
         this.nombre = nombre;
         this.tieneMarca = tieneMarca;
         this.nombreMarca = nombreMarca;
@@ -39,12 +41,8 @@ public class Producto {
         this.precioIvaConDescuento = precioIvaConDescuento;
     }
 
-    public String getCodigoProducto() {
+    public int getCodigoProducto() {
         return codigoProducto;
-    }
-
-    public void setCodigoProducto(String codigoProducto) {
-        this.codigoProducto = codigoProducto;
     }
 
     public String getNombre() {

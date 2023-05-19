@@ -7,7 +7,9 @@ import java.util.List;
  * @Yerlys Castellar
  */
 public class Catalogo {
-    private String codigoCatalogo;
+
+    private static int contadorCatalogo;
+    private int codigoCatalogo;
     private double precio;
     private String descripcion;
     private String estado;
@@ -16,10 +18,12 @@ public class Catalogo {
     private List<Servicio> servicios;
 
     public Catalogo() {
+
+        this.codigoCatalogo = ++Catalogo.contadorCatalogo;
     }
 
-    public Catalogo(String codigoCatalogo, double precio, String descripcion, String estado, String tipo, List<Producto> productos, List<Servicio> servicios) {
-        this.codigoCatalogo = codigoCatalogo;
+    public Catalogo(double precio, String descripcion, String estado, String tipo, List<Producto> productos, List<Servicio> servicios) {
+        this();
         this.precio = precio;
         this.descripcion = descripcion;
         this.estado = estado;
@@ -28,12 +32,8 @@ public class Catalogo {
         this.servicios = servicios;
     }
 
-    public String getCodigoCatalogo() {
+    public int getCodigoCatalogo() {
         return codigoCatalogo;
-    }
-
-    public void setCodigoCatalogo(String codigoCatalogo) {
-        this.codigoCatalogo = codigoCatalogo;
     }
 
     public double getPrecio() {
@@ -87,5 +87,5 @@ public class Catalogo {
     @Override
     public String toString() {
         return "Catalogo{" + "codigoCatalogo=" + codigoCatalogo + ", precio=" + precio + ", descripcion=" + descripcion + ", estado=" + estado + ", tipo=" + tipo + ", productos=" + productos + ", servicios=" + servicios + '}';
-    } 
+    }
 }

@@ -6,7 +6,8 @@ package co.edu.udec.poo.lavaderoDeAutomotores.modelo.entidades;
  */
 public class Proveedor {
 
-    private String codigoProveedor;
+    private static int contadorProveedor;
+    private int codigoProveedor;
     private String nombre;
     private String email;
     private String telefono;
@@ -15,10 +16,11 @@ public class Proveedor {
     private String tipoCuenta;
 
     public Proveedor() {
+        this.codigoProveedor = ++Proveedor.contadorProveedor;
     }
 
-    public Proveedor(String codigoProveedor, String nombre, String email, String telefono, String nombreBanco, int numeroCuenta, String tipoCuenta) {
-        this.codigoProveedor = codigoProveedor;
+    public Proveedor(String nombre, String email, String telefono, String nombreBanco, int numeroCuenta, String tipoCuenta) {
+        this();
         this.nombre = nombre;
         this.email = email;
         this.telefono = telefono;
@@ -27,12 +29,8 @@ public class Proveedor {
         this.tipoCuenta = tipoCuenta;
     }
 
-    public String getCodigoProveedor() {
+    public int getCodigoProveedor() {
         return codigoProveedor;
-    }
-
-    public void setCodigoProveedor(String codigoProveedor) {
-        this.codigoProveedor = codigoProveedor;
     }
 
     public String getNombre() {

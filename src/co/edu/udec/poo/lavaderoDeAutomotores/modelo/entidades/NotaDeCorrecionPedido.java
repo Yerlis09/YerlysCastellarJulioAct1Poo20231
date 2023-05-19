@@ -8,7 +8,8 @@ import java.util.Date;
  */
 public class NotaDeCorrecionPedido {
 
-    private String codigoNotaCPedido;
+    private static int contadorNotaDeCorrecionPedido;
+    private int codigoNotaCPedido;
     private Date fechaEmision;
     private Date fechaMaxConf;
     private Date fechaMaxEntrega;
@@ -24,10 +25,11 @@ public class NotaDeCorrecionPedido {
     private double totalDifConRespectTotalDescCorrect;
 
     public NotaDeCorrecionPedido() {
+        this.codigoNotaCPedido = ++NotaDeCorrecionPedido.contadorNotaDeCorrecionPedido;
     }
 
-    public NotaDeCorrecionPedido(String codigoNotaCPedido, Date fechaEmision, Date fechaMaxConf, Date fechaMaxEntrega, int totalLineas, double totalPreciosUnitCorrect, int totalUnidCorrect, double totalDescCorrect, double totalPreciosUnitaIncorrect, int totalUnidIncorrect, double totalDescIncorrect, double totalDifConRespectTotalPrecioUnitCorrecto, double totalDifConRespTotalUnidCorrect, double totalDifConRespectTotalDescCorrect) {
-        this.codigoNotaCPedido = codigoNotaCPedido;
+    public NotaDeCorrecionPedido(Date fechaEmision, Date fechaMaxConf, Date fechaMaxEntrega, int totalLineas, double totalPreciosUnitCorrect, int totalUnidCorrect, double totalDescCorrect, double totalPreciosUnitaIncorrect, int totalUnidIncorrect, double totalDescIncorrect, double totalDifConRespectTotalPrecioUnitCorrecto, double totalDifConRespTotalUnidCorrect, double totalDifConRespectTotalDescCorrect) {
+        this();
         this.fechaEmision = fechaEmision;
         this.fechaMaxConf = fechaMaxConf;
         this.fechaMaxEntrega = fechaMaxEntrega;
@@ -43,12 +45,8 @@ public class NotaDeCorrecionPedido {
         this.totalDifConRespectTotalDescCorrect = totalDifConRespectTotalDescCorrect;
     }
 
-    public String getCodigoNotaCPedido() {
+    public int getCodigoNotaCPedido() {
         return codigoNotaCPedido;
-    }
-
-    public void setCodigoNotaCPedido(String codigoNotaCPedido) {
-        this.codigoNotaCPedido = codigoNotaCPedido;
     }
 
     public Date getFechaEmision() {

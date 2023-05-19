@@ -6,17 +6,19 @@ package co.edu.udec.poo.lavaderoDeAutomotores.modelo.entidades;
  */
 public class Cubiculo {
 
-    private String codigoCubiculos;
+    private static int contadorCubiculo;
+    private int codigoCubiculos;
     private String nombre;
     private String area;
     private String estado;
     private String turnoDisponible;
 
     public Cubiculo() {
+        this.codigoCubiculos = ++Cubiculo.contadorCubiculo;
     }
 
-    public Cubiculo(String codigoCubiculos, String nombre, String area, String estado, String turnoDisponible) {
-        this.codigoCubiculos = codigoCubiculos;
+    public Cubiculo(String nombre, String area, String estado, String turnoDisponible) {
+        this();
         this.nombre = nombre;
         this.area = area;
         this.estado = estado;
@@ -24,12 +26,8 @@ public class Cubiculo {
     }
 
     
-    public String getCodigoCubiculos() {
+    public int getCodigoCubiculos() {
         return codigoCubiculos;
-    }
-
-    public void setCodigoCubiculos(String codigoCubiculos) {
-        this.codigoCubiculos = codigoCubiculos;
     }
 
     public String getNombre() {

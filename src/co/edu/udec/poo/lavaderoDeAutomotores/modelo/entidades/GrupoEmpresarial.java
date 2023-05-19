@@ -8,28 +8,25 @@ import java.util.List;
  */
 public class GrupoEmpresarial {
 
-    private String codigoEmpresa;
+    private static int contadorGrupoEmpresarial;
+    private int codigoEmpresa;
     private String nombreEmpresa;
     private List<MicroEmpresa> microEmpresa;
     private List<ContratoDeTrabajo> contratosDeTrabajo;
 
     public GrupoEmpresarial() {
+        this.codigoEmpresa = ++GrupoEmpresarial.contadorGrupoEmpresarial;
     }
 
-    public GrupoEmpresarial(String codigoEmpresa, String nombreEmpresa, List<MicroEmpresa> microEmpresa, List<ContratoDeTrabajo> contratosDeTrabajo) {
-        this.codigoEmpresa = codigoEmpresa;
+    public GrupoEmpresarial(String nombreEmpresa, List<MicroEmpresa> microEmpresa, List<ContratoDeTrabajo> contratosDeTrabajo) {
+        this();
         this.nombreEmpresa = nombreEmpresa;
         this.microEmpresa = microEmpresa;
         this.contratosDeTrabajo = contratosDeTrabajo;
     }
 
-    
-    public String getCodigoEmpresa() {
+    public int getCodigoEmpresa() {
         return codigoEmpresa;
-    }
-
-    public void setCodigoEmpresa(String codigoEmpresa) {
-        this.codigoEmpresa = codigoEmpresa;
     }
 
     public String getNombreEmpresa() {

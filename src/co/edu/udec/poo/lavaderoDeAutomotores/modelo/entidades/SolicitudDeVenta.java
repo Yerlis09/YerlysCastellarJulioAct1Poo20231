@@ -8,8 +8,9 @@ import java.sql.Timestamp;
  */
 public class SolicitudDeVenta {
 
-    private String consecutivo;
-    private String codigoServicio;
+    private static int contadorSolicitudDeVenta;
+    private int consecutivo;
+    private int codigoServicio;
     private String nombre;
     private double precioDeVenta;
     private double porcentajeDeIva;
@@ -30,9 +31,9 @@ public class SolicitudDeVenta {
     private double total;
     private String tiempoServicio;
 
-    public SolicitudDeVenta(String consecutivo, String codigoServicio, String nombre, double precioDeVenta, double porcentajeDeIva, double valorCorreIva, double precioMasValorIva, double valorTotalCorrespo, double descuento, double precioTotalPagarPorServicio, String descripcionServicio, Timestamp fechaYhoraInicio, Timestamp fechaYhorafin, String inlcuyeTipoSP, double precioTotalPorServicio, String descripServicioApliAuto, Timestamp fechaHoraInicio, Timestamp fechaHoraFin, int cantidad, double total, String tiempoServicio) {
+    public SolicitudDeVenta(int consecutivo, String nombre, double precioDeVenta, double porcentajeDeIva, double valorCorreIva, double precioMasValorIva, double valorTotalCorrespo, double descuento, double precioTotalPagarPorServicio, String descripcionServicio, Timestamp fechaYhoraInicio, Timestamp fechaYhorafin, String inlcuyeTipoSP, double precioTotalPorServicio, String descripServicioApliAuto, Timestamp fechaHoraInicio, Timestamp fechaHoraFin, int cantidad, double total, String tiempoServicio) {
+        this();
         this.consecutivo = consecutivo;
-        this.codigoServicio = codigoServicio;
         this.nombre = nombre;
         this.precioDeVenta = precioDeVenta;
         this.porcentajeDeIva = porcentajeDeIva;

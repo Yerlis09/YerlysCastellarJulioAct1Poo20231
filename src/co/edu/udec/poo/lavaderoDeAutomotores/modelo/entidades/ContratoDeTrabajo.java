@@ -7,8 +7,9 @@ import java.util.Date;
  * @Yerlys Castellar
  */
 public class ContratoDeTrabajo {
-
-    private String codigoContrato;
+    
+    private static int contadorContratoDeTrabajo;
+    private int codigoContrato;
     private Date fechaDeTrabajo;
     private double sueldoBase;
     private String tipoCargo;
@@ -16,10 +17,11 @@ public class ContratoDeTrabajo {
     private String funcion;
 
     public ContratoDeTrabajo() {
+        this.codigoContrato = ++ContratoDeTrabajo.contadorContratoDeTrabajo;
     }
 
-    public ContratoDeTrabajo(String codigoContrato, Date fechaDeTrabajo, double sueldoBase, String tipoCargo, String horarioDeTrabajo, String funcion) {
-        this.codigoContrato = codigoContrato;
+    public ContratoDeTrabajo(Date fechaDeTrabajo, double sueldoBase, String tipoCargo, String horarioDeTrabajo, String funcion) {
+        this();
         this.fechaDeTrabajo = fechaDeTrabajo;
         this.sueldoBase = sueldoBase;
         this.tipoCargo = tipoCargo;
@@ -27,12 +29,8 @@ public class ContratoDeTrabajo {
         this.funcion = funcion;
     } 
     
-    public String getCodigoContrato() {
+    public int getCodigoContrato() {
         return codigoContrato;
-    }
-
-    public void setCodigoContrato(String codigoContrato) {
-        this.codigoContrato = codigoContrato;
     }
 
     public Date getFechaDeTrabajo() {

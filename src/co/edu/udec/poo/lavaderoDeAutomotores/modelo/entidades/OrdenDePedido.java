@@ -8,7 +8,8 @@ import java.util.Date;
  */
 public class OrdenDePedido {
 
-    private String codigoOrden;
+    private static int contadorOrdenDePedido;
+    private int codigoOrden;
     private Date fechaEmision;
     private Date fechaMaximaConf;
     private Date fechaMaximaEntrega;
@@ -17,10 +18,11 @@ public class OrdenDePedido {
     private int item;
 
     public OrdenDePedido() {
+        this.codigoOrden = ++OrdenDePedido.contadorOrdenDePedido;
     }
 
-    public OrdenDePedido(String codigoOrden, Date fechaEmision, Date fechaMaximaConf, Date fechaMaximaEntrega, String estado, String descripcionPedido, int item) {
-        this.codigoOrden = codigoOrden;
+    public OrdenDePedido(Date fechaEmision, Date fechaMaximaConf, Date fechaMaximaEntrega, String estado, String descripcionPedido, int item) {
+        this();
         this.fechaEmision = fechaEmision;
         this.fechaMaximaConf = fechaMaximaConf;
         this.fechaMaximaEntrega = fechaMaximaEntrega;
@@ -29,12 +31,8 @@ public class OrdenDePedido {
         this.item = item;
     }
 
-    public String getCodigoOrden() {
+    public int getCodigoOrden() {
         return codigoOrden;
-    }
-
-    public void setCodigoOrden(String codigoOrden) {
-        this.codigoOrden = codigoOrden;
     }
 
     public Date getFechaEmision() {

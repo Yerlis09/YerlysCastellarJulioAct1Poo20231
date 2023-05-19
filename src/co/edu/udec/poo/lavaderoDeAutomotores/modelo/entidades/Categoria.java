@@ -6,23 +6,21 @@ package co.edu.udec.poo.lavaderoDeAutomotores.modelo.entidades;
  */
 public class Categoria {
 
-    private String codigoCategoria;
+    private static int contadorCategoria;
+    private int codigoCategoria;
     private String nombre;
 
     public Categoria() {
+        this.codigoCategoria = ++Categoria.contadorCategoria;
     }
 
-    public Categoria(String codigoCategoria, String nombre) {
-        this.codigoCategoria = codigoCategoria;
+    public Categoria(String nombre) {
+        this();
         this.nombre = nombre;
     }
 
-    public String getCodigoCategoria() {
+    public int getCodigoCategoria() {
         return codigoCategoria;
-    }
-
-    public void setCodigoCategoria(String codigoCategoria) {
-        this.codigoCategoria = codigoCategoria;
     }
 
     public String getNombre() {

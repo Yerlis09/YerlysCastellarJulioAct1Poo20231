@@ -6,7 +6,7 @@ package co.edu.udec.poo.lavaderoDeAutomotores.modelo.entidades;
  */
 public class Automotor {
 
-    public static int contadorAutomotor;
+    private static int contadorAutomotor;
     private int codigoAutomotor;
     private String planta;
     private String marca;

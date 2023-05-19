@@ -9,7 +9,8 @@ import java.util.List;
  */
 public class CotizacionDeCompra {
 
-    private String codigoCotizacion;
+    private static int contadorCotizacionDeCompra;
+    private int codigoCotizacion;
     private Date fechaEmision;
     private Date fechaExpiracion;
     private String tiempoMaximaEntrega;
@@ -24,10 +25,11 @@ public class CotizacionDeCompra {
     private double totalPreciosConIvaDescuento;
 
     public CotizacionDeCompra() {
+        this.codigoCotizacion = ++CotizacionDeCompra.contadorCotizacionDeCompra;
     }
 
-    public CotizacionDeCompra(String codigoCotizacion, Date fechaEmision, Date fechaExpiracion, String tiempoMaximaEntrega, String estadoCotizacion, int item, List<Producto> productosSolicitados, int totalLineas, double totalPreciosUnitarios, double totalrecioSinIva, double totalPreciosConIva, double totalDescuentos, double totalPreciosConIvaDescuento) {
-        this.codigoCotizacion = codigoCotizacion;
+    public CotizacionDeCompra(Date fechaEmision, Date fechaExpiracion, String tiempoMaximaEntrega, String estadoCotizacion, int item, List<Producto> productosSolicitados, int totalLineas, double totalPreciosUnitarios, double totalrecioSinIva, double totalPreciosConIva, double totalDescuentos, double totalPreciosConIvaDescuento) {
+        this();
         this.fechaEmision = fechaEmision;
         this.fechaExpiracion = fechaExpiracion;
         this.tiempoMaximaEntrega = tiempoMaximaEntrega;
@@ -42,12 +44,8 @@ public class CotizacionDeCompra {
         this.totalPreciosConIvaDescuento = totalPreciosConIvaDescuento;
     }
     
-    public String getCodigoCotizacion() {
+    public int getCodigoCotizacion() {
         return codigoCotizacion;
-    }
-
-    public void setCodigoCotizacion(String codigoCotizacion) {
-        this.codigoCotizacion = codigoCotizacion;
     }
 
     public Date getFechaEmision() {

@@ -8,23 +8,21 @@ import java.util.Date;
  */
 public class OrdenDeVenta {
 
-    private String codigoOrden;
+    private static int contadorOrdenDeVenta;
+    private int codigoOrden;
     private Date fechaSolicitud;
 
     public OrdenDeVenta() {
+        this.codigoOrden = ++OrdenDeVenta.contadorOrdenDeVenta;
     }
 
-    public OrdenDeVenta(String codigoOrden, Date fechaSolicitud) {
-        this.codigoOrden = codigoOrden;
+    public OrdenDeVenta(Date fechaSolicitud) {
+        this();
         this.fechaSolicitud = fechaSolicitud;
     }
 
-    public String getCodigoOrden() {
+    public int getCodigoOrden() {
         return codigoOrden;
-    }
-
-    public void setCodigoOrden(String codigoOrden) {
-        this.codigoOrden = codigoOrden;
     }
 
     public Date getFechaSolicitud() {

@@ -8,25 +8,23 @@ import java.util.List;
  */
 public class MicroEmpresa {
 
-    private String codigoMicroEmpresa;
+    private static int contadorMicroEmpresa;
+    private int codigoMicroEmpresa;
     private String especialidad;
     private List<Cubiculo> cubiculos;
 
     public MicroEmpresa() {
+        this.codigoMicroEmpresa = ++MicroEmpresa.contadorMicroEmpresa;
     }
 
-    public MicroEmpresa(String codigoMicroEmpresa, String especialidad, List<Cubiculo> cubiculos) {
-        this.codigoMicroEmpresa = codigoMicroEmpresa;
+    public MicroEmpresa(String especialidad, List<Cubiculo> cubiculos) {
+        this();
         this.especialidad = especialidad;
         this.cubiculos = cubiculos;
     }
 
-    public String getCodigoMicroEmpresa() {
+    public int getCodigoMicroEmpresa() {
         return codigoMicroEmpresa;
-    }
-
-    public void setCodigoMicroEmpresa(String codigoMicroEmpresa) {
-        this.codigoMicroEmpresa = codigoMicroEmpresa;
     }
 
     public String getEspecialidad() {
@@ -48,5 +46,5 @@ public class MicroEmpresa {
     @Override
     public String toString() {
         return "MicroEmpresa{" + "codigoMicroEmpresa=" + codigoMicroEmpresa + ", especialidad=" + especialidad + ", cubiculos=" + cubiculos + '}';
-    }     
+    }
 }

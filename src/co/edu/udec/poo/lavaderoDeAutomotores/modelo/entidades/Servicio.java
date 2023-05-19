@@ -6,7 +6,8 @@ package co.edu.udec.poo.lavaderoDeAutomotores.modelo.entidades;
  */
 public class Servicio {
 
-    private String codigoServicio;
+    private static int contadorServicio;
+    private int codigoServicio;
     private String nombre;
     private double precioVenta;
     private double porcentIva;
@@ -16,10 +17,11 @@ public class Servicio {
     private double descuento;
 
     public Servicio() {
+        this.codigoServicio = ++Servicio.contadorServicio;
     }
 
-    public Servicio(String codigoServicio, String nombre, double precioVenta, double porcentIva, double valorCorreIva, double precioMasValorIva, double valorTotalCorres, double descuento) {
-        this.codigoServicio = codigoServicio;
+    public Servicio(String nombre, double precioVenta, double porcentIva, double valorCorreIva, double precioMasValorIva, double valorTotalCorres, double descuento) {
+        this();
         this.nombre = nombre;
         this.precioVenta = precioVenta;
         this.porcentIva = porcentIva;
@@ -29,12 +31,8 @@ public class Servicio {
         this.descuento = descuento;
     }
 
-    public String getCodigoServicio() {
+    public int getCodigoServicio() {
         return codigoServicio;
-    }
-
-    public void setCodigoServicio(String codigoServicio) {
-        this.codigoServicio = codigoServicio;
     }
 
     public String getNombre() {

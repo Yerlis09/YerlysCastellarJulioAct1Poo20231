@@ -8,7 +8,8 @@ import java.util.Date;
  */
 public class Funcionario {
 
-    private String codigoFuncionario;
+    private static int contadorFuncionario;
+    private int codigoFuncionario;
     private String tipoDeId;
     private String numeroDeId;
     private Date fechaDeExpedicion;
@@ -22,10 +23,11 @@ public class Funcionario {
     private String telefono;
 
     public Funcionario() {
+        this.codigoFuncionario = ++Funcionario.contadorFuncionario;
     }
 
-    public Funcionario(String codigoFuncionario, String tipoDeId, String numeroDeId, Date fechaDeExpedicion, String lugarDeExpedicion, String nombres, String apellidos, Date fechaDeNacimiento, String genero, String email, String direccion, String telefono) {
-        this.codigoFuncionario = codigoFuncionario;
+    public Funcionario(String tipoDeId, String numeroDeId, Date fechaDeExpedicion, String lugarDeExpedicion, String nombres, String apellidos, Date fechaDeNacimiento, String genero, String email, String direccion, String telefono) {
+        this();
         this.tipoDeId = tipoDeId;
         this.numeroDeId = numeroDeId;
         this.fechaDeExpedicion = fechaDeExpedicion;
@@ -39,13 +41,8 @@ public class Funcionario {
         this.telefono = telefono;
     }
 
-    
-    public String getCodigoFuncionario() {
+    public int getCodigoFuncionario() {
         return codigoFuncionario;
-    }
-
-    public void setCodigoFuncionario(String codigoFuncionario) {
-        this.codigoFuncionario = codigoFuncionario;
     }
 
     public String getTipoDeId() {

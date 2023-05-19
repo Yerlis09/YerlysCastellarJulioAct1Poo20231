@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.udec.poo.lavaderoDeAutomotores.modelo.crud;
 
 import co.edu.udec.poo.lavaderoDeAutomotores.modelo.entidades.Producto;
@@ -14,10 +9,11 @@ import java.util.List;
  * @author LENOVO
  */
 public class ProductoCrud {
+
     private static ArrayList<Producto> collecProducto = new ArrayList<>();
 
     public static Producto consultarProducto(Producto producto) throws Exception {
-        try {
+        try { 
             int indice = buscarIndiceProducto(producto);
             return collecProducto.get(indice);
         } catch (Exception e) {
@@ -30,14 +26,14 @@ public class ProductoCrud {
             collecProducto.add(producto);
             return 1;
         } catch (Exception e) {
-           throw new Exception(e.getMessage()); 
+            throw new Exception(e.getMessage());
         }
     }
 
-    public static int actualizarProducto(Producto producto1) throws Exception {
+    public static int actualizarProducto(Producto producto) throws Exception {
         try {
-            int indice = buscarIndiceProducto(producto1);
-            collecProducto.set(indice, producto1);
+            int indice = buscarIndiceProducto(producto);
+            collecProducto.set(indice, producto);
             return 1;
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -61,7 +57,7 @@ public class ProductoCrud {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        
+
     }
 
     public static List<Producto> listarTodo() throws Exception {
@@ -72,7 +68,7 @@ public class ProductoCrud {
         }
     }
 
-    public static int contarProducto() throws Exception{
+    public static int contarProducto() throws Exception {
         try {
             return collecProducto.size();
         } catch (Exception e) {

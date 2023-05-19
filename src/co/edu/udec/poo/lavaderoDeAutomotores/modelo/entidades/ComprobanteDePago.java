@@ -8,7 +8,8 @@ import java.util.Date;
  */
 public class ComprobanteDePago {
 
-    private String codigoComprobante;
+    private static int contadorComprobanteDePago;
+    private int codigoComprobante;
     private double valorPagarProveedor;
     private String codigoUnicoTransaccion;
     private Date fechaPago;
@@ -16,23 +17,20 @@ public class ComprobanteDePago {
     private int numeroCtaBancariaEmpresa;
 
     public ComprobanteDePago() {
+        this.codigoComprobante = ++ComprobanteDePago.contadorComprobanteDePago;
     }
 
-    public ComprobanteDePago(String codigoComprobante, double valorPagarProveedor, String codigoUnicoTransaccion, Date fechaPago, double valorPagar, int numeroCtaBancariaEmpresa) {
-        this.codigoComprobante = codigoComprobante;
+    public ComprobanteDePago(double valorPagarProveedor, String codigoUnicoTransaccion, Date fechaPago, double valorPagar, int numeroCtaBancariaEmpresa) {
+        this();
         this.valorPagarProveedor = valorPagarProveedor;
         this.codigoUnicoTransaccion = codigoUnicoTransaccion;
         this.fechaPago = fechaPago;
         this.valorPagar = valorPagar;
         this.numeroCtaBancariaEmpresa = numeroCtaBancariaEmpresa;
     }
-    
-    public String getCodigoComprobante() {
-        return codigoComprobante;
-    }
 
-    public void setCodigoComprobante(String codigoComprobante) {
-        this.codigoComprobante = codigoComprobante;
+    public int getCodigoComprobante() {
+        return codigoComprobante;
     }
 
     public double getValorPagarProveedor() {

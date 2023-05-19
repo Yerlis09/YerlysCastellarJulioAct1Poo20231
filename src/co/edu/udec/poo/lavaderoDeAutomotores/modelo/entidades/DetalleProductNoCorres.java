@@ -6,7 +6,8 @@ package co.edu.udec.poo.lavaderoDeAutomotores.modelo.entidades;
  */
 public class DetalleProductNoCorres {
 
-    private String codigoDetalle;
+    private static int contadorDetalleProductNoCorres;
+    private int codigoDetalleProductNoCorres;
     private String codigoProductoErrado;
     private int unidades;
     private double precioErrado;
@@ -17,10 +18,11 @@ public class DetalleProductNoCorres {
     private double precioTotalDiferencia;
 
     public DetalleProductNoCorres() {
+        this.codigoDetalleProductNoCorres = ++DetalleProductNoCorres.contadorDetalleProductNoCorres;
     }
 
-    public DetalleProductNoCorres(String codigoDetalle, String codigoProductoErrado, int unidades, double precioErrado, double valorDifConRespPrecioCorre, int unidadesErradas, double cantUnidDiferConUniCorr, double valorDifeConRespDescCorrrect, double precioTotalDiferencia) {
-        this.codigoDetalle = codigoDetalle;
+    public DetalleProductNoCorres(String codigoProductoErrado, int unidades, double precioErrado, double valorDifConRespPrecioCorre, int unidadesErradas, double cantUnidDiferConUniCorr, double valorDifeConRespDescCorrrect, double precioTotalDiferencia) {
+        this();
         this.codigoProductoErrado = codigoProductoErrado;
         this.unidades = unidades;
         this.precioErrado = precioErrado;
@@ -31,13 +33,8 @@ public class DetalleProductNoCorres {
         this.precioTotalDiferencia = precioTotalDiferencia;
     }
 
-    
-    public String getCodigoDetalle() {
-        return codigoDetalle;
-    }
-
-    public void setCodigoDetalle(String codigoDetalle) {
-        this.codigoDetalle = codigoDetalle;
+    public int getCodigoDetalleProductNoCorres() {
+        return codigoDetalleProductNoCorres;
     }
 
     public String getCodigoProductoErrado() {
@@ -106,6 +103,6 @@ public class DetalleProductNoCorres {
 
     @Override
     public String toString() {
-        return "DetalleProductNoCorres{" + "codigoDetalle=" + codigoDetalle + ", codigoProductoErrado=" + codigoProductoErrado + ", unidades=" + unidades + ", precioErrado=" + precioErrado + ", valorDifConRespPrecioCorre=" + valorDifConRespPrecioCorre + ", unidadesErradas=" + unidadesErradas + ", cantUnidDiferConUniCorr=" + cantUnidDiferConUniCorr + ", valorDifeConRespDescCorrrect=" + valorDifeConRespDescCorrrect + ", precioTotalDiferencia=" + precioTotalDiferencia + '}';
+        return "DetalleProductNoCorres{" + "codigoDetalle=" + codigoDetalleProductNoCorres + ", codigoProductoErrado=" + codigoProductoErrado + ", unidades=" + unidades + ", precioErrado=" + precioErrado + ", valorDifConRespPrecioCorre=" + valorDifConRespPrecioCorre + ", unidadesErradas=" + unidadesErradas + ", cantUnidDiferConUniCorr=" + cantUnidDiferConUniCorr + ", valorDifeConRespDescCorrrect=" + valorDifeConRespDescCorrrect + ", precioTotalDiferencia=" + precioTotalDiferencia + '}';
     }
 }
