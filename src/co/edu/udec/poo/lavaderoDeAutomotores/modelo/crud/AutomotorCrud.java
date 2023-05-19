@@ -23,7 +23,7 @@ public class AutomotorCrud {
             collecAutomotor.add(automotor);
             return 1;
         } catch (Exception e) {
-           throw new Exception(e.getMessage()); 
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -54,7 +54,6 @@ public class AutomotorCrud {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        
     }
 
     public static List<Automotor> listarTodo() throws Exception {
@@ -65,7 +64,7 @@ public class AutomotorCrud {
         }
     }
 
-    public static int contarAutomotor() throws Exception{
+    public static int contarAutomotor() throws Exception {
         try {
             return collecAutomotor.size();
         } catch (Exception e) {

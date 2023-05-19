@@ -12,60 +12,66 @@ public class BodegaCrud {
 
     private static ArrayList<Bodega> collecBodega = new ArrayList<>();
 
-    public static Bodega consultarBodega(int codigoBodega) throws Exception {
+    public static Bodega consultarBodega(Bodega bodega) throws Exception {
         try {
-            for (Bodega bodega : collecBodega) {
-                if (codigoBodega == bodega.getCodigoBodega()) {
-                    return bodega;
-                }
-            }
-
+            int indice = buscarIndiceBodega(bodega);
+            return collecBodega.get(indice);
         } catch (Exception e) {
-            throw new Exception(e);
+            throw new Exception(e.getMessage());
         }
-        return null;
     }
 
-    public static void registrarBodega(Bodega Bodega) throws Exception {
+    public static int registrarBodega(Bodega bodega) throws Exception {
         try {
-            collecBodega.add(Bodega);
+            collecBodega.add(bodega);
+            return 1;
         } catch (Exception e) {
+            throw new Exception(e.getMessage());
         }
     }
 
-    public static int actualizarBodega(Bodega Bodega1) {
+    public static int actualizarBodega(Bodega bodega) throws Exception {
         try {
-            for (Bodega bodega : collecBodega) {
-                if (bodega.getCodigoBodega() == Bodega1.getCodigoBodega()) {
-                    bodega.setNuevoPrecioVentaProducto(1.50000);
-                    bodega.setNuevoPrecioVentaProducto(Bodega1.getNuevoPrecioVentaProducto());
-                    bodega.setPrecioUnitActualMenosPrecioUnitarioAnt(Bodega1.getPrecioUnitActualMenosPrecioUnitarioAnt());
-                    bodega.setStock(Bodega1.getStock());
-                    System.out.println("El Bodega fue actualizado correctamente" + bodega);
-                }
-            }
+            int indice = buscarIndiceBodega(bodega);
+            collecBodega.set(indice, bodega);
+            return 1;
         } catch (Exception e) {
-        }
-        return -1;
-    }
-
-    public static void eliminarBodega(int codigoBodega) {
-        for (Bodega bodega : collecBodega) {
-            if (bodega.getCodigoBodega() == codigoBodega) {
-                collecBodega.remove(bodega);
-                System.out.println("El Bodega fue eliminado correctamente" + collecBodega);
-            }
+            throw new Exception(e.getMessage());
         }
     }
 
-    public static List<Bodega> listarTodo() {
-        collecBodega.forEach(bodega -> {
-            System.out.println(bodega);
-        });
-        return null;
+    public static int buscarIndiceBodega(Bodega bodega) throws Exception {
+        try {
+            int indice = collecBodega.indexOf(bodega);
+            return indice;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 
-    public static int contarBodega() {
-        return collecBodega.size();
+    public static int eliminarBodega(Bodega bodega) throws Exception {
+        try {
+            int indice = buscarIndiceBodega(bodega);
+            collecBodega.remove(indice);
+            return 1;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public static List<Bodega> listarTodo() throws Exception {
+        try {
+            return collecBodega;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public static int contarBodega() throws Exception {
+        try {
+            return collecBodega.size();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 }

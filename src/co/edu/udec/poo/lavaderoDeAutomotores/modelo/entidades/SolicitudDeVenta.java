@@ -8,9 +8,9 @@ import java.sql.Timestamp;
  */
 public class SolicitudDeVenta {
 
-    private static string contadorSolicitudDeVenta;
+    private static int contadorSolicitudDeVenta;
     private int consecutivo;
-    private int codigoServicio;
+    private int codigoSolicitudDeVenta;
     private String nombre;
     private double precioDeVenta;
     private double porcentajeDeIva;
@@ -30,6 +30,10 @@ public class SolicitudDeVenta {
     private int cantidad;
     private double total;
     private String tiempoServicio;
+
+    public SolicitudDeVenta() {
+        this.codigoSolicitudDeVenta = ++SolicitudDeVenta.contadorSolicitudDeVenta;
+    }
 
     public SolicitudDeVenta(int consecutivo, String nombre, double precioDeVenta, double porcentajeDeIva, double valorCorreIva, double precioMasValorIva, double valorTotalCorrespo, double descuento, double precioTotalPagarPorServicio, String descripcionServicio, Timestamp fechaYhoraInicio, Timestamp fechaYhorafin, String inlcuyeTipoSP, double precioTotalPorServicio, String descripServicioApliAuto, Timestamp fechaHoraInicio, Timestamp fechaHoraFin, int cantidad, double total, String tiempoServicio) {
         this();
@@ -55,23 +59,16 @@ public class SolicitudDeVenta {
         this.tiempoServicio = tiempoServicio;
     }
 
-    public SolicitudDeVenta() {
-    }
-
-    public String getConsecutivo() {
+    public int getConsecutivo() {
         return consecutivo;
     }
 
-    public void setConsecutivo(String consecutivo) {
+    public void setConsecutivo(int consecutivo) {
         this.consecutivo = consecutivo;
     }
 
-    public String getCodigoServicio() {
-        return codigoServicio;
-    }
-
-    public void setCodigoServicio(String codigoServicio) {
-        this.codigoServicio = codigoServicio;
+    public int getCodigoSolicitudDeVenta() {
+        return codigoSolicitudDeVenta;
     }
 
     public String getNombre() {
@@ -228,6 +225,6 @@ public class SolicitudDeVenta {
 
     @Override
     public String toString() {
-        return "SolicitudDeVenta{" + "consecutivo=" + consecutivo + ", codigoServicio=" + codigoServicio + ", nombre=" + nombre + ", precioDeVenta=" + precioDeVenta + ", porcentajeDeIva=" + porcentajeDeIva + ", valorCorreIva=" + valorCorreIva + ", precioMasValorIva=" + precioMasValorIva + ", valorTotalCorrespo=" + valorTotalCorrespo + ", descuento=" + descuento + ", precioTotalPagarPorServicio=" + precioTotalPagarPorServicio + ", descripcionServicio=" + descripcionServicio + ", fechaYhoraInicio=" + fechaYhoraInicio + ", fechaYhorafin=" + fechaYhorafin + ", inlcuyeTipoSP=" + inlcuyeTipoSP + ", precioTotalPorServicio=" + precioTotalPorServicio + ", descripServicioApliAuto=" + descripServicioApliAuto + ", fechaHoraInicio=" + fechaHoraInicio + ", fechaHoraFin=" + fechaHoraFin + ", cantidad=" + cantidad + ", total=" + total + ", tiempoServicio=" + tiempoServicio + '}';
+        return "SolicitudDeVenta{" + "consecutivo=" + consecutivo + ", codigoServicio=" + codigoSolicitudDeVenta + ", nombre=" + nombre + ", precioDeVenta=" + precioDeVenta + ", porcentajeDeIva=" + porcentajeDeIva + ", valorCorreIva=" + valorCorreIva + ", precioMasValorIva=" + precioMasValorIva + ", valorTotalCorrespo=" + valorTotalCorrespo + ", descuento=" + descuento + ", precioTotalPagarPorServicio=" + precioTotalPagarPorServicio + ", descripcionServicio=" + descripcionServicio + ", fechaYhoraInicio=" + fechaYhoraInicio + ", fechaYhorafin=" + fechaYhorafin + ", inlcuyeTipoSP=" + inlcuyeTipoSP + ", precioTotalPorServicio=" + precioTotalPorServicio + ", descripServicioApliAuto=" + descripServicioApliAuto + ", fechaHoraInicio=" + fechaHoraInicio + ", fechaHoraFin=" + fechaHoraFin + ", cantidad=" + cantidad + ", total=" + total + ", tiempoServicio=" + tiempoServicio + '}';
     }
 }
