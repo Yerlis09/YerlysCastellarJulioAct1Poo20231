@@ -5,10 +5,78 @@
  */
 package co.edu.udec.poo.lavaderoDeAutomotores.modelo.crud;
 
+import co.edu.udec.poo.lavaderoDeAutomotores.modelo.entidades.OrdenDePedido;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author LENOVO
  */
 public class OrdenDePedidoCrud {
-    
+    private static ArrayList<OrdenDePedido> collecOrdenDePedido = new ArrayList<>();
+
+    public static OrdenDePedido consultarOrdenDePedido(OrdenDePedido ordenDePedido) throws Exception {
+        try {
+            int indice = buscarIndiceOrdenDePedido(ordenDePedido);
+            return collecOrdenDePedido.get(indice);
+        } catch (Exception e) {
+            throw new Exception(e);
+        }
+    }
+
+    public static int registrarOrdenDePedido(OrdenDePedido ordenDePedido) throws Exception {
+        try {
+            collecOrdenDePedido.add(ordenDePedido);
+            return 1;
+        } catch (Exception e) {
+           throw new Exception(e.getMessage()); 
+        }
+    }
+
+    public static int actualizarOrdenDePedido(OrdenDePedido ordenDePedido1) throws Exception {
+        try {
+            int indice = buscarIndiceOrdenDePedido(ordenDePedido1);
+            collecOrdenDePedido.set(indice, ordenDePedido1);
+            return 1;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public static int buscarIndiceOrdenDePedido(OrdenDePedido ordenDePedido) throws Exception {
+        try {
+            int indice = collecOrdenDePedido.indexOf(ordenDePedido);
+            return indice;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public static int eliminarOrdenDePedido(OrdenDePedido ordenDePedido) throws Exception {
+        try {
+            int indice = buscarIndiceOrdenDePedido(ordenDePedido);
+            collecOrdenDePedido.remove(indice);
+            return 1;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+        
+    }
+
+    public static List<OrdenDePedido> listarTodo() throws Exception {
+        try {
+            return collecOrdenDePedido;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public static int contarOrdenDePedido() throws Exception{
+        try {
+            return collecOrdenDePedido.size();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
 }

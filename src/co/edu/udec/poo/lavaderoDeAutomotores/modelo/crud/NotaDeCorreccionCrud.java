@@ -5,10 +5,79 @@
  */
 package co.edu.udec.poo.lavaderoDeAutomotores.modelo.crud;
 
+import co.edu.udec.poo.lavaderoDeAutomotores.modelo.entidades.NotaDeCorreccion;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author LENOVO
  */
 public class NotaDeCorreccionCrud {
+    private static ArrayList<NotaDeCorreccion> collecNotaDeCorreccion = new ArrayList<>();
+
+    public static NotaDeCorreccion consultarNotaDeCorreccion(NotaDeCorreccion notaDeCorrecion) throws Exception {
+        try {
+            int indice = buscarIndiceNotaDeCorreccion(notaDeCorrecion);
+            return collecNotaDeCorreccion.get(indice);
+        } catch (Exception e) {
+            throw new Exception(e);
+        }
+    }
+
+    public static int registrarNotaDeCorreccion(NotaDeCorreccion notaDeCorrecion) throws Exception {
+        try {
+            collecNotaDeCorreccion.add(notaDeCorrecion);
+            return 1;
+        } catch (Exception e) {
+           throw new Exception(e.getMessage()); 
+        }
+    }
+
+    public static int actualizarNotaDeCorreccion(NotaDeCorreccion notaDeCorrecion1) throws Exception {
+        try {
+            int indice = buscarIndiceNotaDeCorreccion(notaDeCorrecion1);
+            collecNotaDeCorreccion.set(indice, notaDeCorrecion1);
+            return 1;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public static int buscarIndiceNotaDeCorreccion(NotaDeCorreccion notaDeCorrecion) throws Exception {
+        try {
+            int indice = collecNotaDeCorreccion.indexOf(notaDeCorrecion);
+            return indice;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public static int eliminarNotaDeCorreccion(NotaDeCorreccion notaDeCorrecion) throws Exception {
+        try {
+            int indice = buscarIndiceNotaDeCorreccion(notaDeCorrecion);
+            collecNotaDeCorreccion.remove(indice);
+            return 1;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+        
+    }
+
+    public static List<NotaDeCorreccion> listarTodo() throws Exception {
+        try {
+            return collecNotaDeCorreccion;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public static int contarNotaDeCorreccion() throws Exception{
+        try {
+            return collecNotaDeCorreccion.size();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
     
 }

@@ -5,10 +5,78 @@
  */
 package co.edu.udec.poo.lavaderoDeAutomotores.modelo.crud;
 
+import co.edu.udec.poo.lavaderoDeAutomotores.modelo.entidades.CotizacionDeCompra;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author LENOVO
  */
 public class CotizacionDeCompraCrud {
-    
+    private static ArrayList<CotizacionDeCompra> collecCotizacionDeCompra = new ArrayList<>();
+
+    public static CotizacionDeCompra consultarCotizacionDeCompra(CotizacionDeCompra cotizacionDeCompra) throws Exception {
+        try {
+            int indice = buscarIndiceCotizacionDeCompra(cotizacionDeCompra);
+            return collecCotizacionDeCompra.get(indice);
+        } catch (Exception e) {
+            throw new Exception(e);
+        }
+    }
+
+    public static int registrarCotizacionDeCompra(CotizacionDeCompra cotizacionDeCompra) throws Exception {
+        try {
+            collecCotizacionDeCompra.add(cotizacionDeCompra);
+            return 1;
+        } catch (Exception e) {
+           throw new Exception(e.getMessage()); 
+        }
+    }
+
+    public static int actualizarCotizacionDeCompra(CotizacionDeCompra cotizacionDeCompra1) throws Exception {
+        try {
+            int indice = buscarIndiceCotizacionDeCompra(cotizacionDeCompra1);
+            collecCotizacionDeCompra.set(indice, cotizacionDeCompra1);
+            return 1;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public static int buscarIndiceCotizacionDeCompra(CotizacionDeCompra cotizacionDeCompra) throws Exception {
+        try {
+            int indice = collecCotizacionDeCompra.indexOf(cotizacionDeCompra);
+            return indice;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public static int eliminarCotizacionDeCompra(CotizacionDeCompra cotizacionDeCompra) throws Exception {
+        try {
+            int indice = buscarIndiceCotizacionDeCompra(cotizacionDeCompra);
+            collecCotizacionDeCompra.remove(indice);
+            return 1;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+        
+    }
+
+    public static List<CotizacionDeCompra> listarTodo() throws Exception {
+        try {
+            return collecCotizacionDeCompra;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public static int contarCotizacionDeCompra() throws Exception{
+        try {
+            return collecCotizacionDeCompra.size();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
 }

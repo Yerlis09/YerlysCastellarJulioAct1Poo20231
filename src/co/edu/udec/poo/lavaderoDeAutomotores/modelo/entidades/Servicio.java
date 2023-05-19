@@ -4,7 +4,7 @@ package co.edu.udec.poo.lavaderoDeAutomotores.modelo.entidades;
  *
  * @Yerlys Castellar
  */
-class Servicio {
+public class Servicio {
 
     private String codigoServicio;
     private String nombre;
