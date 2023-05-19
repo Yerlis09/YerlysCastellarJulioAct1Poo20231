@@ -8,7 +8,7 @@ import java.sql.Timestamp;
  */
 public class SolicitudDeVenta {
 
-    private static int contadorSolicitudDeVenta;
+    private static string contadorSolicitudDeVenta;
     private int consecutivo;
     private int codigoServicio;
     private String nombre;
