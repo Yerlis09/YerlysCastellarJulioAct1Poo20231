@@ -3,68 +3,73 @@ package co.edu.udec.poo.lavaderoDeAutomotores.modelo.crud;
 import co.edu.udec.poo.lavaderoDeAutomotores.modelo.entidades.Automotor;
 
 import java.util.List;
-import java.util.Map;
 import java.util.ArrayList;
 
 public class AutomotorCrud {
 
     private static ArrayList<Automotor> collecAutomotor = new ArrayList<>();
 
-    public static Automotor consultarAutomotor(int codigoAutomotor) throws Exception {
+    public static Automotor consultarAutomotor(Automotor automotor) throws Exception {
         try {
-            for (Automotor auto : collecAutomotor) {
-                if (codigoAutomotor == auto.getCodigoAutomotor()) {
-                    return auto;
-                }
-            }
-
+            int indice = buscarIndiceAutomotor(automotor);
+            return collecAutomotor.get(indice);
         } catch (Exception e) {
             throw new Exception(e);
         }
-        return null;
     }
 
-    public static void registrarAutomotor(Automotor automotor) throws Exception {
+    public static int registrarAutomotor(Automotor automotor) throws Exception {
         try {
             collecAutomotor.add(automotor);
+            return 1;
         } catch (Exception e) {
+           throw new Exception(e.getMessage()); 
         }
     }
 
-    public static int actualizarAutomotor(Automotor automotor1) {
+    public static int actualizarAutomotor(Automotor automotor1) throws Exception {
         try {
-            for (Automotor auto : collecAutomotor) {
-                if (auto.getCodigoAutomotor() == automotor1.getCodigoAutomotor()) {
-                    auto.setColor("byyyy");
-                    auto.setMarca(automotor1.getMarca());
-                    auto.setPlanta(automotor1.getPlanta());
-                    auto.setTipo(automotor1.getTipo());
-                    System.out.println("El automotor fue actualizado correctamente" + auto);
-                }
-            }
+            int indice = buscarIndiceAutomotor(automotor1);
+            collecAutomotor.set(indice, automotor1);
+            return 1;
         } catch (Exception e) {
-        }
-        return -1;
-    }
-
-    public static void eliminarAutomotor(int codigoAtomotor) {
-        for (Automotor auto : collecAutomotor) {
-            if (auto.getCodigoAutomotor() == codigoAtomotor) {
-                collecAutomotor.remove(auto);
-                System.out.println("El automotor fue eliminado correctamente" + collecAutomotor);
-            }
+            throw new Exception(e.getMessage());
         }
     }
 
-    public static List<Automotor> listarTodo() {
-        collecAutomotor.forEach(auto -> {
-            System.out.println(auto);
-        });
-        return null;
+    public static int buscarIndiceAutomotor(Automotor automotor) throws Exception {
+        try {
+            int indice = collecAutomotor.indexOf(automotor);
+            return indice;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 
-    public static int contarAutomotor() {
-        return collecAutomotor.size();
+    public static int eliminarAutomotor(Automotor automotor) throws Exception {
+        try {
+            int indice = buscarIndiceAutomotor(automotor);
+            collecAutomotor.remove(indice);
+            return 1;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+        
+    }
 
+    public static List<Automotor> listarTodo() throws Exception {
+        try {
+            return collecAutomotor;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public static int contarAutomotor() throws Exception{
+        try {
+            return collecAutomotor.size();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 }

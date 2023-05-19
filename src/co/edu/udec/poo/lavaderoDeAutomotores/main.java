@@ -10,6 +10,7 @@ public class main {
     public static void main(String[] args) {
         try {
             Automotor automotor1 = new Automotor("prueba1", "Prueba1", "prueba1", "prueba1");
+            Automotor automotor22 = new Automotor("prueba1", "Prueba1", "prueba1", "prueba1");
             Automotor automotor2 = new Automotor("prueba2", "Prueba2", "prueba2", "prueba2");
             Automotor automotor3 = new Automotor("prueba3", "Prueba3", "prueba3", "prueba3");
             Automotor automotor4 = new Automotor("prueba4", "Prueba4", "prueba4", "prueba4");
@@ -21,7 +22,7 @@ public class main {
             AutomotorCrud.registrarAutomotor(automotor4);
             AutomotorCrud.registrarAutomotor(automotor5);
             System.out.println("--Consultar---");
-            System.out.println(AutomotorCrud.consultarAutomotor(automotor1.getCodigoAutomotor()));
+            System.out.println(AutomotorCrud.consultarAutomotor(automotor1));
             System.out.println("--Actualizar---");
             AutomotorCrud.actualizarAutomotor(automotor1);
             System.out.println("--ListarTodo---");
@@ -29,7 +30,8 @@ public class main {
             System.out.println("--Contar---");
             System.out.println(AutomotorCrud.contarAutomotor());
             System.out.println("--Eliminar---");
-            AutomotorCrud.eliminarAutomotor(automotor1.getCodigoAutomotor());
+            AutomotorCrud.eliminarAutomotor(automotor1);
+            
         } catch (Exception e) {
         }
     }
